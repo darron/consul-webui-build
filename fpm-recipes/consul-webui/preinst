@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+# Remove the symlink if it exists.
+if [ -L /var/lib/consul/ui ]; then
+  rm -f /var/lib/consul/ui
+fi
+
+exit 0

@@ -1,0 +1,25 @@
+box: darron/ubuntu14.04@1.0.2
+no-response-timeout: 10
+build:
+  steps:
+    - script:
+        name: prepare the required items.
+        code: |
+          sudo apt-get update
+          sudo apt-get install -y libssl-dev unzip curl && sudo gem install fpm-cookery --no-ri --no-rdoc
+          sudo curl https://packagecloud.io/install/repositories/darron/consul/script.deb | sudo bash
+    - script:
+        name: get the source and build
+        code: |
+          git clone https://github.com/darron/consul-webui-build.git
+          cd fpm-recipes/consul-webui
+          sudo fpm-cook install-deps
+          sudo fpm-cook
+deploy:
+  steps:
+    - script:
+        name: push to packagecloud
+        code: |
+          sudo gem install package_cloud --no-ri --no-rdoc
+          PACKAGECLOUD=$(eval echo "\$PACKAGECLOUD_TOKEN") && echo -e "$PACKAGECLOUD" > ~/.packagecloud && chmod 600 ~/.packagecloud
+          DEB_FILE=$(find . -name '*.deb') && package_cloud push darron/consul-webui/ubuntu/trusty $DEB_FILE
