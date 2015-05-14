@@ -1,13 +1,13 @@
 class ConsulWebui < FPM::Cookery::Recipe
   name 'consul-webui'
 
-  version '0.5.0'
-  revision '2'
+  version '0.5.1'
+  revision '1'
   description 'Admin web UI for Consul.'
 
   homepage 'https://github.com/hashicorp/consul/tree/master/ui'
   source "https://dl.bintray.com/mitchellh/consul/#{version}_web_ui.zip"
-  sha256 '0081d08be9c0b1172939e92af5a7cf9ba4f90e54fae24a353299503b24bb8be9'
+  sha256 'ad883aa52e1c0136ab1492bbcedad1210235f26d59719fb6de3ef6464f1ff3b1'
 
   maintainer 'Darron Froese <darron@froese.org>'
   vendor 'octohost'
