@@ -1,7 +1,7 @@
 class ConsulWebui < FPM::Cookery::Recipe
   name 'consul-webui'
 
-  version '0.5.1'
+  version '0.5.2'
   revision '1'
   description 'Admin web UI for Consul.'
 
