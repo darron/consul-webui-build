@@ -7,7 +7,7 @@ build:
         code: |
           sudo apt-get update
           sudo apt-get install -y libssl-dev unzip curl && sudo gem install fpm-cookery --no-ri --no-rdoc
-          sudo curl https://packagecloud.io/install/repositories/darron/consul/script.deb | sudo bash
+          sudo curl https://packagecloud.io/install/repositories/darron/consul/script.deb.sh | sudo bash
     - script:
         name: get the source and build
         code: |
