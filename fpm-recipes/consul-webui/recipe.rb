@@ -26,6 +26,6 @@ class ConsulWebui < FPM::Cookery::Recipe
 
   def install
     safesystem "mkdir -p #{destdir}/var/lib/consul/ui"
-    safesystem "cp -ar #{builddir}/#{version}_web_ui/dist/* #{destdir}/var/lib/consul/ui/"
+    safesystem "cp -ar #{builddir}/consul_#{version}_web_ui/* #{destdir}/var/lib/consul/ui/"
   end
 end
