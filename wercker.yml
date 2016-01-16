@@ -15,6 +15,9 @@ build:
           cd fpm-recipes/consul-webui
           sudo fpm-cook install-deps
           sudo fpm-cook
+  after-steps:
+      - wantedly/pretty-slack-notify:
+          webhook_url: $SLACK_WEBHOOK_URL
 deploy:
   steps:
     - script:
@@ -25,3 +28,6 @@ deploy:
           DEB_FILE=$(find . -name '*.deb') && package_cloud push darron/consul-webui/ubuntu/trusty $DEB_FILE
           DEB_FILE=$(find . -name '*.deb') && package_cloud push darron/consul-webui/ubuntu/precise $DEB_FILE
           DEB_FILE=$(find . -name '*.deb') && package_cloud push darron/octohost/ubuntu/trusty $DEB_FILE
+  after-steps:
+      - wantedly/pretty-slack-notify:
+          webhook_url: $SLACK_WEBHOOK_URL
